@@ -1,0 +1,24 @@
+package sample;
+/* Coinflip.java
+ * Alessandro Krapf
+ * 4 December 2020
+ * Java 161
+ * This program plays the luck game coin flip, and keeps track of the score (using a random number generator).
+ */
+import java.util.Date;
+import java.util.Random;
+import java.util.Scanner;
+public class Coinflip {
+    public boolean coinflip() {
+        Scanner input = new Scanner(System.in);
+        long timeSeed = new Date().getTime();
+        Random random = new Random(timeSeed);
+        String[] choices = {"Heads", "Tails"};
+        int callIt, compChoice = random.nextInt(2);
+        System.out.print("What is your choice?\n1: Heads\n2: Tails\n:\n");
+        callIt = input.nextInt();
+        System.out.print("The Computer chose " + choices[compChoice] + ".\n");
+        compChoice = compChoice + 1;
+        return compChoice == callIt;
+    }
+}
