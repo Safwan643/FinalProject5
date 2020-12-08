@@ -1,9 +1,8 @@
-package sample;
+
 /* Coinflip.java
  * Alessandro Krapf
- * 4 December 2020
- * Java 161
- * This program plays the luck game coin flip, and keeps track of the score (using a random number generator).
+ * 12/7/2020
+ * This program plays the game coin flip using a random number generator. It sends information to a main class.
  */
 import java.util.Date;
 import java.util.Random;

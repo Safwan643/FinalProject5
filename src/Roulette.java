@@ -1,10 +1,4 @@
-
-
-
-
-package sample;
-
-        import java.util.Random;
+import java.util.Random;
         import java.util.Scanner;
 
 public class Roulette
@@ -21,7 +15,7 @@ public class Roulette
         int rouletteNum;
         int result;
         char response = 'y';
-        int resultArr[] = new int[36];
+        int[] resultArr = new int[36];
 
         while (response == 'y' || response == 'Y' && total <= 0)
         {

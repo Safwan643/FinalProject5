@@ -1,4 +1,4 @@
-package sample;
+
 /* RockPaperScissors.java
  * Luke Langius
  * 12/7/2020
@@ -10,13 +10,12 @@ import java.util.Scanner;
 
 
 public class RockPaperScissors {
-    public int Score (){
-        int score = 0;
-        System.out.println("Just a heads up, the score tracks like this. If score = 0 computer won, if score = 1 user won, if score = 2 tie.");
+    public int Score() {
+        int score = 2;
             Scanner input = new Scanner(System.in);
             long timeSeed = new Date().getTime();
             Random random = new Random(timeSeed);
-            String choices[] = {"Rock ", "Paper", "Scissors"};
+            String[] choices = {"Rock ", "Paper", "Scissors"};
 
             System.out.print("\nWhich do you want to choose? \n"
                     + "1. Rock \n"
@@ -29,21 +28,14 @@ public class RockPaperScissors {
             int compChoice = random.nextInt(3);
 
             System.out.print("The computer chose " + choices[compChoice] + "\n");
-            if (userChoice == compChoice) {
-                score = 2;
-                System.out.println("Tie");
-            } else if (userChoice + 1 == compChoice) {
+            if (userChoice + 1 == compChoice) {
                 score = 0;
-                System.out.println("Computer Won");
             } else if (userChoice + 2 == compChoice) {
                 score = 1;
-                System.out.println("User Won");
             } else if (userChoice - 1 == compChoice) {
                 score = 1;
-                System.out.println("User Won");
             } else if (userChoice - 2 == compChoice) {
                 score = 0;
-                System.out.println("Computer Won");
             }
         return score;
     }
