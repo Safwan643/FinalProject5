@@ -31,19 +31,19 @@ public class RockPaperScissors {
             System.out.print("The computer chose " + choices[compChoice] + "\n");
             if (userChoice == compChoice) {
                 score = 2;
-                System.out.println("Tie \n");
+                System.out.println("Tie");
             } else if (userChoice + 1 == compChoice) {
                 score = 0;
-                System.out.println("Computer Won \n");
+                System.out.println("Computer Won");
             } else if (userChoice + 2 == compChoice) {
                 score = 1;
-                System.out.println("User Won\n");
+                System.out.println("User Won");
             } else if (userChoice - 1 == compChoice) {
                 score = 1;
-                System.out.println("User Won\n");
+                System.out.println("User Won");
             } else if (userChoice - 2 == compChoice) {
                 score = 0;
-                System.out.println("Computer Won\n");
+                System.out.println("Computer Won");
             }
         return score;
     }

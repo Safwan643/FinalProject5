@@ -15,13 +15,15 @@ public class Coinflip {
         Random random = new Random(timeSeed);
         String[] choices = {"Heads", "Tails"};
         int callIt, compChoice = random.nextInt(2);
-        System.out.print("\nWhich do you want to choose? \n"
+        System.out.print("Which do you want to choose? \n"
                 + "1. Heads \n"
                 + "2. Tails \n"
                 + "Choice: ");
         callIt = input.nextInt();
-        System.out.print("The Computer chose " + choices[compChoice] + ".\n");
+        System.out.print("The flip landed as " + choices[compChoice] + ".\n");
+
         compChoice = compChoice + 1;
         return compChoice == callIt;
     }
+
 }
