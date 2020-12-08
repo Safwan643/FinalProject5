@@ -1,3 +1,8 @@
+/* Main.java
+ * Alessandro Krapf, Luke Langius, Safwan Ahmad
+ * 12/7/2020
+ * This program plays three luck games. This is the main class, mostly input/output. Calls 3 classes that run actual games.
+ */
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -18,17 +23,11 @@ public class Main {
             String GambleAmountString = Double.toString(GambleAmount),
                     Win = "You won! Congratulations, you won $" + GambleAmountString + ".", Lose = "You lost. I regret to inform you that you lost $" + GambleAmountString + ".",
                     Draw = "You have neither won nor lost. You have been refunded $" + GambleAmountString + ".";
-            switch (userChoice) {
-                case "CF":
-                    cf.coinflip();
-                    break;
-                case "RPS":
-                    rps.Score();
-                    break;
-            }
-            if (rps.Score() == 1 || cf.coinflip()) {
+            if (userChoice.equals("CF")) { cf.Score(); }
+            else if (userChoice.equals("RPS")) { rps.Score(); }
+            if (rps.Score() == 1 || cf.Score()) {
                 System.out.println(Win);
-            } else if (rps.Score() == 0 || !cf.coinflip()) {
+            } else if (rps.Score() == 0 || !cf.Score()) {
                 System.out.println(Lose);
             } else if (rps.Score() == 2) {
                 System.out.println(Draw);
@@ -38,7 +37,7 @@ public class Main {
                     "N: No.\n" +
                     "Choice: ");
             String loops = input.nextLine();
-            if(loops.equals("N")) { break; }
+            if (loops.equals("N")) { break; }
         }while(true);
     }
 }
