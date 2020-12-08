@@ -13,18 +13,25 @@ public class Main {
         String name = input.nextLine();
         System.out.print("Hello " + name + ". ");
         do {
-            System.out.print("Please pick your game: \n" +
+            System.out.print("Please pick your game.\n" +
                     "CF: Coin Flip. You will win 1x what you bet, and have a 50% chance of winning.\n" +
                     "RPS: Rock Paper Scissors. You will win 1.5x what you bet, and have a 33.33% chance of winning.\n" +
                     "Choice: ");
             String userChoice = input.nextLine();
-            System.out.print("Ok, how much would you like to bet? Enter in format WX.YZ: ");
+            System.out.print("Ok, how much would you like to bet? Enter in format AB.CD: ");
             double GambleAmount = input.nextDouble();
             String GambleAmountString = Double.toString(GambleAmount),
                     Win = "You won! Congratulations, you won $" + GambleAmountString + ".", Lose = "You lost. I regret to inform you that you lost $" + GambleAmountString + ".",
                     Draw = "You have neither won nor lost. You have been refunded $" + GambleAmountString + ".";
-            if (userChoice.equals("CF")) { cf.Score(); }
-            else if (userChoice.equals("RPS")) { rps.Score(); }
+            while(true) {
+                if (userChoice.equals("CF")) {
+                    cf.Score();
+                    break;
+                } else if (userChoice.equals("RPS")) {
+                    rps.Score();
+                    break;
+                } else { System.out.print("Please input either CF or RPS:"); }
+            }
             if (rps.Score() == 1 || cf.Score()) {
                 System.out.println(Win);
             } else if (rps.Score() == 0 || !cf.Score()) {

@@ -19,8 +19,7 @@ public class Coinflip {
                 + "Choice: ");
         callIt = input.nextInt();
         System.out.print("The flip landed as " + choices[compChoice] + ".\n");          //uses random integer to call it.
-
-        compChoice = compChoice + 1;                      //comp uses 0,1. To make more comfy, this makes it 1,2.
+        compChoice = compChoice + 1;                      //comp uses 0,1. To make more comfy, this allows user to input 1,2.
         return compChoice == callIt;                 //returns boolean. If user input = computers random input, true. else false.
     }                                               //this allows true/false to = win/lose. there is no draw in flip.
 

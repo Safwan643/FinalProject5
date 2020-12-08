@@ -21,20 +21,14 @@ public class RockPaperScissors {
                 + "3. Scissors \n"
                 + "Choice: ");
         int userChoice = input.nextInt();
-        userChoice--;
-        int compChoice = random.nextInt(3);
-        System.out.print("The computer chose " + choices[compChoice] + "\n");
-        if (userChoice + 1 == compChoice) {
-            score = 0;
-        } else if (userChoice + 2 == compChoice) {
+        userChoice--;         //comp uses 0,1. To make more comfy, this allows user to input 1,2.
+        int compChoice = random.nextInt(3);        //creates random integer.
+        System.out.print("The computer chose " + choices[compChoice] + ".\n");  //uses random integer to call it.
+        if (userChoice + 1 == compChoice || userChoice - 2 == compChoice) {
+            score = 0;        //Runs through scenarios for wins, and losses. Int assumes automatically it will be draw.
+        } else if (userChoice + 2 == compChoice || userChoice - 1 == compChoice) {
             score = 1;
-        } else if (userChoice - 1 == compChoice) {
-            score = 1;
-        } else if (userChoice - 2 == compChoice) {
-            score = 0;
         }
     return score;
     }
 }
-
-
