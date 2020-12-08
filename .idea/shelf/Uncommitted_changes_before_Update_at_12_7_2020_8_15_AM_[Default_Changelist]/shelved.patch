@@ -1,0 +1,64 @@
+Index: src/sample/Coinflip.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sample;\r\n/* Coinflip.java\r\n * Alessandro Krapf\r\n * 4 December 2020\r\n * Java 161\r\n * This program plays the luck game coin flip, and keeps track of the score (using a random number generator).\r\n */\r\nimport java.util.Date;\r\nimport java.util.Random;\r\nimport java.util.Scanner;\r\npublic class Coinflip {\r\n    public boolean coinflip() {\r\n        Scanner input = new Scanner(System.in);\r\n        long timeSeed = new Date().getTime();\r\n        Random random = new Random(timeSeed);\r\n        String[] choices = {\"Heads\", \"Tails\"};\r\n        int callIt, compChoice = random.nextInt(2);\r\n        System.out.print(\"What is your choice?\\n1: Heads\\n2: Tails\\n:\\n\");\r\n        callIt = input.nextInt();\r\n        System.out.print(\"The Computer chose \" + choices[compChoice] + \".\\n\");\r\n        compChoice = compChoice + 1;\r\n        return compChoice == callIt;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/sample/Coinflip.java	(revision c852231792007fe6561c0c9d446726609ecb9f88)
++++ src/sample/Coinflip.java	(date 1607058904374)
+@@ -21,4 +21,5 @@
+         compChoice = compChoice + 1;
+         return compChoice == callIt;
+     }
++
+ }
+Index: src/sample/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sample;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\n\r\npublic class Main extends Application {\r\n\r\n    @Override\r\n    public void start(Stage primaryStage) throws Exception{\r\n        Parent root = FXMLLoader.load(getClass().getResource(\"sample.fxml\"));\r\n        primaryStage.setTitle(\"Hello World\");\r\n        primaryStage.setScene(new Scene(root, 300, 275));\r\n        primaryStage.show();\r\n    }\r\n\r\n\r\n    public static void main(String[] args) {\r\n        launch(args);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/sample/Main.java	(revision c852231792007fe6561c0c9d446726609ecb9f88)
++++ src/sample/Main.java	(date 1607059506473)
+@@ -5,13 +5,14 @@
+ import javafx.scene.Parent;
+ import javafx.scene.Scene;
+ import javafx.stage.Stage;
++import javafx.scene.control.Button;
+ 
+ public class Main extends Application {
+ 
+     @Override
+     public void start(Stage primaryStage) throws Exception{
+         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+-        primaryStage.setTitle("Hello World");
++        primaryStage.setTitle("The Casino: Game Choice");
+         primaryStage.setScene(new Scene(root, 300, 275));
+         primaryStage.show();
+     }
+Index: src/sample/MainJava.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/sample/MainJava.java	(date 1607059335150)
++++ src/sample/MainJava.java	(date 1607059335150)
+@@ -0,0 +1,16 @@
++package sample;
++import java.util.Scanner;
++public class MainJava {
++    public int PlayAGame(){
++        Scanner input = new Scanner(System.in);
++        int game;
++        System.out.println("What do you want to play? You can choose roulette, rock paper scissors, or coinflip.\n" +
++                "Type your choice, all lowercase spelling and no punctuation.");
++        String games = input.nextLine();
++
++        return 1;
++    }
++    public static void main(String[] args) {
++
++    }
++}
