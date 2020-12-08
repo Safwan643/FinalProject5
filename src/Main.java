@@ -25,9 +25,11 @@ public class Main {
                     Draw = "You have neither won nor lost. You have been refunded $" + GambleAmountString + ".";
             while(true) {
                 if (userChoice.equals("CF")) {
+                    System.out.println(userChoice);
                     cf.Score();
                     break;
                 } else if (userChoice.equals("RPS")) {
+                    System.out.println(userChoice);
                     rps.Score();
                     break;
                 } else { System.out.print("Please input either CF or RPS:"); }
