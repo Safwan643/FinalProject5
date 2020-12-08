@@ -11,8 +11,8 @@ public class Roulette {
         Scanner input = new Scanner(System.in);
         Random generator = new Random();
         int choice=0, number=0, rouletteNum = generator.nextInt(36);  //holds the numbers and the yes and no
-        System.out.print("1: Even. 50% chance of winning, with 1x prize.\n" +
-            "2: Odd. 50% chance of winning, with 1x prize.\n" +
+        System.out.print("1: Odd. 50% chance of winning, with 1x prize.\n" +
+            "2: Even. 50% chance of winning, with 1x prize.\n" +
             "3: Number 1-36. 2.78% chance of winning, with 36x prize.\n"); //choices for betting. Explain prize and percentage of winning as well.
         while (choice < 1 || choice > 3){
             System.out.print("Place your bet on: "); //asks you to place your bet on something
