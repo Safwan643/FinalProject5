@@ -22,8 +22,11 @@ public class Main {
                     "3. Roulette. You have the choice of a 50% win, winning 1x what you bet, or a 2.78%(1 in 36) win, winning 36x what you bet.\n" +
                     "Choice: ");
             int userChoice = input.nextInt();
-            System.out.print("Ok, your total is $" + total + ". How much would you like to bet? Enter in format AB.CD: ");
-            double win = 1, GambleAmount = input.nextDouble(), WinAmount = 0, LoseAmount = 0;
+            double win = 1, GambleAmount, WinAmount = 0, LoseAmount = 0;
+            do{
+                System.out.print("Ok, your total is $" + total + ". How much of that would you like to bet? ");
+                GambleAmount = input.nextDouble();
+            }while(GambleAmount > total);
             if (userChoice == 2) win = 1.5;
             String Win = "You won! Congratulations, you won $" + GambleAmount * win + ".",
                     Lose = "You lost. I regret to inform you that you lost $" + GambleAmount + ".",

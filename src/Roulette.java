@@ -19,7 +19,7 @@ public class Roulette {
             choice = input.nextInt();
             rouletteNum++;
         }
-        if (choice == 2) {
+        if (choice == 3) {
             while(number < 1 || number > 36) {
                 System.out.print("Place your bet on number (1-36): "); //for the number choice when you pick 2
                 number = input.nextInt();
