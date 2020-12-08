@@ -10,12 +10,9 @@ import java.util.Scanner;
 
 
 public class RockPaperScissors {
-    public int RockPaperScissorsScore (){
-        boolean loop = true;
+    public int Score (){
         int score = 0;
         System.out.println("Just a heads up, the score tracks like this. If score = 0 computer won, if score = 1 user won, if score = 2 tie.");
-        while (loop) {
-
             Scanner input = new Scanner(System.in);
             long timeSeed = new Date().getTime();
             Random random = new Random(timeSeed);
@@ -48,18 +45,6 @@ public class RockPaperScissors {
                 score = 0;
                 System.out.println("Computer Won\n");
             }
-
-            System.out.println("The score is " + score);
-
-            System.out.print("Would you like to go again? \n"
-                    + "1. Yes \n"
-                    + "2. No \n"
-                    + "Choice: ");
-            int userChoice2 = input.nextInt();
-            if (userChoice2 == 2) {
-                loop = false;
-            }
-        }
         return score;
     }
 }

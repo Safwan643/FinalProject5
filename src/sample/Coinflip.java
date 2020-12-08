@@ -15,7 +15,10 @@ public class Coinflip {
         Random random = new Random(timeSeed);
         String[] choices = {"Heads", "Tails"};
         int callIt, compChoice = random.nextInt(2);
-        System.out.print("What is your choice?\n1: Heads\n2: Tails\n:\n");
+        System.out.print("\nWhich do you want to choose? \n"
+                + "1. Heads \n"
+                + "2. Tails \n"
+                + "Choice: ");
         callIt = input.nextInt();
         System.out.print("The Computer chose " + choices[compChoice] + ".\n");
         compChoice = compChoice + 1;
