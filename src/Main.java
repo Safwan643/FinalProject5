@@ -25,14 +25,13 @@ public class Main {
             String Win = "You won! Congratulations, you won $" + GambleAmount * win + ".",
                     Lose = "You lost. I regret to inform you that you lost $" + GambleAmount + ".",
                     Draw = "You have neither won nor lost. You have been refunded $" + GambleAmount + ".";
-               switch (userChoice) {
+            System.out.println("The first round is a practice round, you are welcome.");
+            switch (userChoice) {
                    case 1:
-                       System.out.println("The first round is a practice round, you are welcome.");
                        cf.Score();
                        if (cf.Score()) { System.out.println(Win); } else System.out.println(Lose);
                        break;
                    case 2:
-                       System.out.println("The first round is a practice round, you are welcome.");
                        rps.Score();
                        switch (rps.Score()) {
                            case 0:
