@@ -12,15 +12,15 @@ public class Coinflip {
         long timeSeed = new Date().getTime();
         Random random = new Random(timeSeed);
         String[] choices = {"Heads", "Tails"};
-        int callIt, compChoice = random.nextInt(2);         //creates random integer.
+        int userChoice, compChoice = random.nextInt(2);         //creates random integer.
         System.out.print("Which do you want to choose? \n"
                 + "1. Heads \n"
                 + "2. Tails \n"
                 + "Choice: ");
-        callIt = input.nextInt();
+        userChoice = input.nextInt();
         System.out.print("The flip landed as " + choices[compChoice] + ".\n");          //uses random integer to call it.
-        compChoice = compChoice + 1;                      //comp uses 0,1. To make more comfy, this allows user to input 1,2.
-        return compChoice == callIt;                 //returns boolean. If user input = computers random input, true. else false.
+        compChoice++;                      //comp uses 0,1. To make more comfy, this allows user to input 1,2.
+        return compChoice == userChoice;                 //returns boolean. If user input = computers random input, true. else false.
     }                                               //this allows true/false to = win/lose. there is no draw in flip.
 
 }

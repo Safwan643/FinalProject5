@@ -1,0 +1,159 @@
+Index: src/Coinflip.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/* Coinflip.java\r\n * Alessandro Krapf\r\n * 12/7/2020\r\n * This program plays the game coin flip using a random number generator. It sends information to a main class.\r\n */\r\nimport java.util.Date;\r\nimport java.util.Random;\r\nimport java.util.Scanner;\r\npublic class Coinflip {\r\n    public boolean Score() {\r\n        Scanner input = new Scanner(System.in);\r\n        long timeSeed = new Date().getTime();\r\n        Random random = new Random(timeSeed);\r\n        String[] choices = {\"Heads\", \"Tails\"};\r\n        int callIt, compChoice = random.nextInt(2);         //creates random integer.\r\n        System.out.print(\"Which do you want to choose? \\n\"\r\n                + \"1. Heads \\n\"\r\n                + \"2. Tails \\n\"\r\n                + \"Choice: \");\r\n        callIt = input.nextInt();\r\n        System.out.print(\"The flip landed as \" + choices[compChoice] + \".\\n\");          //uses random integer to call it.\r\n        compChoice = compChoice + 1;                      //comp uses 0,1. To make more comfy, this allows user to input 1,2.\r\n        return compChoice == callIt;                 //returns boolean. If user input = computers random input, true. else false.\r\n    }                                               //this allows true/false to = win/lose. there is no draw in flip.\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Coinflip.java	(revision 7d899ea88eadc43e0a26602858043f94f6a1884b)
++++ src/Coinflip.java	(date 1607447857276)
+@@ -12,15 +12,15 @@
+         long timeSeed = new Date().getTime();
+         Random random = new Random(timeSeed);
+         String[] choices = {"Heads", "Tails"};
+-        int callIt, compChoice = random.nextInt(2);         //creates random integer.
++        int userChoice, compChoice = random.nextInt(2);         //creates random integer.
+         System.out.print("Which do you want to choose? \n"
+                 + "1. Heads \n"
+                 + "2. Tails \n"
+                 + "Choice: ");
+-        callIt = input.nextInt();
++        userChoice = input.nextInt();
+         System.out.print("The flip landed as " + choices[compChoice] + ".\n");          //uses random integer to call it.
+-        compChoice = compChoice + 1;                      //comp uses 0,1. To make more comfy, this allows user to input 1,2.
+-        return compChoice == callIt;                 //returns boolean. If user input = computers random input, true. else false.
++        compChoice++;                      //comp uses 0,1. To make more comfy, this allows user to input 1,2.
++        return compChoice == userChoice;                 //returns boolean. If user input = computers random input, true. else false.
+     }                                               //this allows true/false to = win/lose. there is no draw in flip.
+ 
+ }
+\ No newline at end of file
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/* Main.java\r\n * Alessandro Krapf, Luke Langius, Safwan Ahmad\r\n * 12/7/2020\r\n * This program plays three luck games. This is the main class, mostly input/output. Calls 3 classes that run actual games.\r\n */\r\nimport java.util.Scanner;\r\npublic class Main {\r\n    public static void main(String[] args) {\r\n        Coinflip cf = new Coinflip();\r\n        RockPaperScissors rps = new RockPaperScissors();\r\n        Scanner input = new Scanner(System.in);\r\n        System.out.print(\"What is your name? \");\r\n        String name = input.nextLine();\r\n        System.out.print(\"Hello \" + name + \". \");\r\n        do {\r\n            System.out.print(\"Please pick your game.\\n\" +\r\n                    \"CF: Coin Flip. You will win 1x what you bet, and have a 50% chance of winning.\\n\" +\r\n                    \"RPS: Rock Paper Scissors. You will win 1.5x what you bet, and have a 33.33% chance of winning.\\n\" +\r\n                    \"Choice: \");\r\n            String userChoice = input.nextLine();\r\n            System.out.print(\"Ok, how much would you like to bet? Enter in format AB.CD: \");\r\n            double GambleAmount = input.nextDouble();\r\n            String GambleAmountString = Double.toString(GambleAmount),\r\n                    Win = \"You won! Congratulations, you won $\" + GambleAmountString + \".\", Lose = \"You lost. I regret to inform you that you lost $\" + GambleAmountString + \".\",\r\n                    Draw = \"You have neither won nor lost. You have been refunded $\" + GambleAmountString + \".\";\r\n            while(true) {\r\n                if (userChoice.equals(\"CF\")) {\r\n                    System.out.println(userChoice);\r\n                    cf.Score();\r\n                    break;\r\n                } else if (userChoice.equals(\"RPS\")) {\r\n                    System.out.println(userChoice);\r\n                    rps.Score();\r\n                    break;\r\n                } else { System.out.print(\"Please input either CF or RPS:\"); }\r\n            }\r\n            if (rps.Score() == 1 || cf.Score()) {\r\n                System.out.println(Win);\r\n            } else if (rps.Score() == 0 || !cf.Score()) {\r\n                System.out.println(Lose);\r\n            } else if (rps.Score() == 2) {\r\n                System.out.println(Draw);\r\n            }\r\n            System.out.print(\"Do you want to play again? You could make more money...\\n\" +\r\n                    \"Y: Yes.\\n\" +\r\n                    \"N: No.\\n\" +\r\n                    \"Choice: \");\r\n            String loops = input.nextLine();\r\n            if (loops.equals(\"N\")) { break; }\r\n        }while(true);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Main.java	(revision 7d899ea88eadc43e0a26602858043f94f6a1884b)
++++ src/Main.java	(date 1607450153702)
+@@ -8,31 +8,37 @@
+     public static void main(String[] args) {
+         Coinflip cf = new Coinflip();
+         RockPaperScissors rps = new RockPaperScissors();
++        Roulette rtt = new Roulette();
+         Scanner input = new Scanner(System.in);
+         System.out.print("What is your name? ");
+         String name = input.nextLine();
+         System.out.print("Hello " + name + ". ");
+         do {
+             System.out.print("Please pick your game.\n" +
+-                    "CF: Coin Flip. You will win 1x what you bet, and have a 50% chance of winning.\n" +
+-                    "RPS: Rock Paper Scissors. You will win 1.5x what you bet, and have a 33.33% chance of winning.\n" +
++                    "1: Coin Flip. You will win 1x what you bet, and have a 50% chance of winning.\n" +
++                    "2: Rock Paper Scissors. You will win 1.5x what you bet, and have a 33.33% chance of winning.\n" +
++                    "3: Roulette. You have a choice between 50% change of winning with 1x prize, or 2.8% chance of winning, with a 36x prize." +
+                     "Choice: ");
+-            String userChoice = input.nextLine();
++            int userChoice = input.nextInt();
+             System.out.print("Ok, how much would you like to bet? Enter in format AB.CD: ");
+             double GambleAmount = input.nextDouble();
+             String GambleAmountString = Double.toString(GambleAmount),
+                     Win = "You won! Congratulations, you won $" + GambleAmountString + ".", Lose = "You lost. I regret to inform you that you lost $" + GambleAmountString + ".",
+                     Draw = "You have neither won nor lost. You have been refunded $" + GambleAmountString + ".";
+-            while(true) {
+-                if (userChoice.equals("CF")) {
+-                    System.out.println(userChoice);
+-                    cf.Score();
+-                    break;
+-                } else if (userChoice.equals("RPS")) {
+-                    System.out.println(userChoice);
+-                    rps.Score();
+-                    break;
+-                } else { System.out.print("Please input either CF or RPS:"); }
++            boolean rightWrong = true;
++            while(rightWrong) {
++                switch(userChoice) {
++                    case 1:
++                        cf.Score();
++                        rightWrong = false;
++                        break;
++                    case 2:
++                        rps.Score();
++                        rightWrong = false;
++                        break;
++                    default:
++                        System.out.print("Please input either CF or RPS:");
++                }
+             }
+             if (rps.Score() == 1 || cf.Score()) {
+                 System.out.println(Win);
+@@ -42,11 +48,11 @@
+                 System.out.println(Draw);
+             }
+             System.out.print("Do you want to play again? You could make more money...\n" +
+-                    "Y: Yes.\n" +
+-                    "N: No.\n" +
++                    "1: Yes.\n" +
++                    "2: No.\n" +
+                     "Choice: ");
+-            String loops = input.nextLine();
+-            if (loops.equals("N")) { break; }
++            int loops = input.nextInt();
++            if (loops == 2) { break; }
+         }while(true);
+     }
+ }
+\ No newline at end of file
+Index: src/Roulette.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.Random;\r\n        import java.util.Scanner;\r\n\r\npublic class Roulette\r\n{\r\n    public static void main(String[] args)\r\n    {\r\n\r\n        Scanner keyboard = new Scanner(System.in);\r\n        Random generator = new Random();\r\n        double total = 500;\r\n        double amount;    //amount money of $500\r\n        int choice, win = 0, lose = 0, spin = 0;\r\n        int number;           //holds the numbers and the yes and no\r\n        int rouletteNum;\r\n        int result;\r\n        char response = 'y';\r\n        int[] resultArr = new int[36];\r\n\r\n        while (response == 'y' || response == 'Y' && total <= 0)\r\n        {\r\n            System.out.print(\"Enter your bet amount: \"); //bet amount\r\n            amount = keyboard.nextDouble();\r\n            System.out.print(\"0 - Even\\n1 - Odd\\n2 - Number\\n\"); //the even odd numbers\r\n            choice = -1;\r\n            while (choice < 0 || choice > 2)\r\n            {\r\n                System.out.print(\"Place your bet on: \"); //asks you to place your bet on something\r\n                choice = keyboard.nextInt();\r\n            }\r\n            number = 0;\r\n            if (choice == 2)\r\n            {\r\n                while (number < 1 || number > 36)\r\n                {\r\n                    System.out.print(\"Place your bet on number(1-36): \"); //for the number choice when you pick 2\r\n                    number = keyboard.nextInt();\r\n                }\r\n            }\r\n            rouletteNum = generator.nextInt(37);\r\n            spin++;\r\n            System.out.println(\"Roulette number: \" + rouletteNum);\r\n//the if else for when they pick the roulette number\r\n            if (choice == 2)\r\n            {\r\n                if (rouletteNum == number)\r\n                    result = 35;\r\n                else\r\n                    result = 0;\r\n            }\r\n            else\r\n            {\r\n                if (rouletteNum == 0 || rouletteNum % 2 != choice)\r\n                    result = 0;\r\n                else\r\n                    result = 1;\r\n            }\r\n\r\n            //Print out game result, win/lose amount\r\n            if (result > 0)\r\n            {\r\n                System.out.println(\"Congratulatons!!! You win!\");\r\n                System.out.printf(\"You have won $%.2f \\n\", result * amount);\r\n                System.out.printf(\"Here's your money back: $%.2f \\n\",\r\n                        (result + 1) * amount);\r\n                total = (result + 1) * amount + total;\r\n                win ++;\r\n                resultArr[rouletteNum]++;\r\n\r\n            }\r\n            else\r\n            {\r\n                System.out.println(\"You lose. Better luck next time!\");\r\n                System.out.printf(\"You have lost $%.2f \\n\",\r\n                        (result + 1) * amount);\r\n                total = total - (result + 1) * (amount);\r\n                lose ++;\r\n                resultArr[rouletteNum]++;\r\n\r\n                if (total <= 0) {\r\n                    break;\r\n                }\r\n\r\n            }\r\n\r\n            //Ask for another game\r\n            for (int totals=1; totals<36; totals++) {\r\n                if( resultArr[totals] > 0 ) {\r\n                    System.out.println(\"The number \" + totals + \" won \" + resultArr[totals] + \" times.\");\r\n                }\r\n            }\r\n\r\n\r\n\r\n\r\n\r\n            System.out.println(\"You hayve $\" + total + \" remaining.\" );\r\n            System.out.println(\"You have won \" + win + \" games.\");\r\n            System.out.println(\"You have lost \" + lose + \" games.\");\r\n            System.out.println(\"The wheel has been spun \" + spin + \" times.\");\r\n            System.out.print(\"\\nWould you like to play another game? (y/n) \");\r\n            response = keyboard.next().charAt(0);\r\n\r\n\r\n        }\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Roulette.java	(revision 7d899ea88eadc43e0a26602858043f94f6a1884b)
++++ src/Roulette.java	(date 1607450573409)
+@@ -1,6 +1,5 @@
+ import java.util.Random;
+         import java.util.Scanner;
+-
+ public class Roulette
+ {
+     public static void main(String[] args)
+Index: .idea/libraries/lib.xml
+===================================================================
+--- .idea/libraries/lib.xml	(revision 7d899ea88eadc43e0a26602858043f94f6a1884b)
++++ .idea/libraries/lib.xml	(revision 7d899ea88eadc43e0a26602858043f94f6a1884b)
+@@ -1,13 +0,0 @@
+-<component name="libraryTable">
+-  <library name="lib">
+-    <CLASSES>
+-      <root url="file://C:/Program Files/Java/javafx-sdk-14.0.2.1/lib" />
+-    </CLASSES>
+-    <JAVADOC />
+-    <SOURCES>
+-      <root url="file://C:/Program Files/Java/javafx-sdk-14.0.2.1/lib" />
+-    </SOURCES>
+-    <jarDirectory url="file://C:/Program Files/Java/javafx-sdk-14.0.2.1/lib" recursive="false" />
+-    <jarDirectory url="file://C:/Program Files/Java/javafx-sdk-14.0.2.1/lib" recursive="false" type="SOURCES" />
+-  </library>
+-</component>
+\ No newline at end of file
+Index: FinalProject4.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\r\n    <exclude-output />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src\" isTestSource=\"false\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n    <orderEntry type=\"library\" name=\"lib\" level=\"project\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- FinalProject4.iml	(revision 7d899ea88eadc43e0a26602858043f94f6a1884b)
++++ FinalProject4.iml	(date 1607447213658)
+@@ -7,6 +7,5 @@
+     </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+-    <orderEntry type="library" name="lib" level="project" />
+   </component>
+ </module>
+\ No newline at end of file

@@ -3,8 +3,6 @@
  * 12/7/2020
  * This program plays three luck games. This is the main class, mostly input/output. Calls 3 classes that run actual games.
  */
-import javafx.concurrent.Worker;
-
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -22,18 +20,19 @@ public class Main {
                     "Choice: ");
             int userChoice = input.nextInt();
             System.out.print("Ok, how much would you like to bet? Enter in format AB.CD: ");
-            double GambleAmount = input.nextDouble();
-            String GambleAmountString = Double.toString(GambleAmount),
-                    Win = "You won! Congratulations, you won $" + GambleAmountString + ".", Lose = "You lost. I regret to inform you that you lost $" + GambleAmountString + ".",
-                    Draw = "You have neither won nor lost. You have been refunded $" + GambleAmountString + ".";
+            double win = 1, GambleAmount = input.nextDouble();
+            if (userChoice == 2) win = 1.5;
+            String Win = "You won! Congratulations, you won $" + GambleAmount * win + ".",
+                    Lose = "You lost. I regret to inform you that you lost $" + GambleAmount + ".",
+                    Draw = "You have neither won nor lost. You have been refunded $" + GambleAmount + ".";
                switch (userChoice) {
                    case 1:
-                       System.out.println("The first round is a practice round, you are welcome");
+                       System.out.println("The first round is a practice round, you are welcome.");
                        cf.Score();
                        if (cf.Score()) { System.out.println(Win); } else System.out.println(Lose);
                        break;
                    case 2:
-                       System.out.println("The first round is a practice round, you are welcome");
+                       System.out.println("The first round is a practice round, you are welcome.");
                        rps.Score();
                        switch (rps.Score()) {
                            case 0:
