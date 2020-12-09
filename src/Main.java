@@ -26,6 +26,7 @@ public class Main {
         }
     }
     public void ReadFile() {
+        System.out.print("This is what is currently in the file: ");
         try {
             File myObj = new File("filename.txt");
             Scanner myReader = new Scanner(myObj);
@@ -44,17 +45,15 @@ public class Main {
         Main main = new Main();
         main.ReadFile();
         Scanner input = new Scanner(System.in);
-        System.out.println("What is your name? ");
+        System.out.print("What is your name? ");
         main.userName = input.nextLine();
         boolean loop = true;
         Coinflip cf = new Coinflip();
         RockPaperScissors rps = new RockPaperScissors();
         Roulette rtt = new Roulette();
         main.CreateFile();
-        System.out.print("What is your name? ");
-        String name = input.nextLine();
         main.total = main.total + 500;
-        System.out.print("Hello " + name + ". ");
+        System.out.print("Hello " + main.userName + ". ");
         while (loop) {
             System.out.print("Please pick your game.\n" +
                     "1. Coin Flip. You will win 1x what you bet, and have a 50% chance of winning.\n" +
@@ -120,12 +119,12 @@ public class Main {
             }
             main.total = (main.total + WinAmount) - LoseAmount;
             if (main.total > 1000000000) {
-                System.out.println("CONGRATULATIONS, " + name + "!!!!!!!!!! WE HAVE A WINNER!! YOU HAVE MADE MORE THAN 1,000,000,000 (1 BILLION) DOLLARS!!!! $" + main.total + ", to be EXACT.!!" + "\uD83C\uDFC6\uD83C\uDFC6\uD83C\uDFC6 \n" +
+                System.out.println("CONGRATULATIONS, " + main.userName + "!!!!!!!!!! WE HAVE A WINNER!! YOU HAVE MADE MORE THAN 1,000,000,000 (1 BILLION) DOLLARS!!!! $" + main.total + ", to be EXACT.!!" + "\uD83C\uDFC6\uD83C\uDFC6\uD83C\uDFC6 \n" +
                         "You have spent everything but $1,000, and bought yourself a mansion on the moon. You should buy yourself another though...");
                 main.total = 1000;
             }
             if (main.total == 0) {
-                System.out.println("I am sorry to say that you, " + name + ", have a problem. You have lost all of your money. You lose, now please leave.");
+                System.out.println("I am sorry to say that you, " + main.userName + ", have a problem. You have lost all of your money. You lose, now please leave.");
                 break;
             }
             System.out.print("Do you want to play again? Your current total is " + main.total + "\n" +
@@ -143,7 +142,7 @@ public class Main {
     public void WriteToFileTotal() {
         try {
             PrintWriter pW = new PrintWriter("filename.txt");
-            pW.println(userName + " has have a total of " + total + " dollars.");
+            pW.println(userName + " has a total of " + total + " dollars.");
             pW.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
