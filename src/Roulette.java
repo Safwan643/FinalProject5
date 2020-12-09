@@ -12,9 +12,9 @@ public class Roulette {
         Random generator = new Random();
         String evenOdd = "odd";
         int choice=-1, number=0, rouletteNum = generator.nextInt(36);  //holds the numbers and the yes and no
-        System.out.print("1: Odd. 50% chance of winning, with 1x prize.\n" +
+        System.out.println("1: Odd. 50% chance of winning, with 1x prize.\n" +
             "2: Even. 50% chance of winning, with 1x prize.\n" +
-            "3: Number 1-36. 2.78% chance of winning, with 36x prize.\n"); //choices for betting. Explain prize and percentage of winning as well.
+            "3: Number 1-36. 2.78% chance of winning, with 36x prize."); //choices for betting. Explain prize and percentage of winning as well.
         while (choice < 0 || choice > 2){
             System.out.print("Place your bet on: "); //asks you to place your bet on something
             choice = input.nextInt();
@@ -31,7 +31,7 @@ public class Roulette {
         System.out.println("Roulette number: " + rouletteNum + " (" + evenOdd + ")"); //prints what the number is.
         if (choice == 2) {
             if (rouletteNum == number)
-                return 3;
+                return 2;
             else
                 return 0;
         } else {

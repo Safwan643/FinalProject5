@@ -26,7 +26,7 @@ public class Main {
             do{
                 System.out.print("Ok, your total is $" + total + ". How much of that would you like to bet? ");
                 GambleAmount = input.nextDouble();
-            }while(GambleAmount > total);
+            }while(GambleAmount > total || GambleAmount <= 0);
             if (userChoice == 2) win = 1.5;
             String Win = "You won! Congratulations, you won $" + GambleAmount * win + ".",
                     Lose = "You lost. I regret to inform you that you lost $" + GambleAmount + ".",
@@ -79,6 +79,15 @@ public class Main {
                        break;
                }
                total = (total + WinAmount) - LoseAmount;
+            if(total > 1000000000) {
+                System.out.println("CONGRATULATIONS, " + name + "!!!!!!!!!! WE HAVE A WINNER!! YOU HAVE MADE MORE THAN 1,000,000,000 (1 BILLION) DOLLARS!!!! $" + total + ", to be EXACT.!!" + "\uD83C\uDFC6\uD83C\uDFC6\uD83C\uDFC6 \n" +
+                        "You have spent everything but $1,000, and bought yourself a mansion on the moon. You should buy yourself another though...");
+                total = 1000;
+            }
+            if (total == 0) {
+                System.out.println("I am sorry to say that you, " + name + ", have a problem. You have lost all of your money. You lose, now please leave.");
+                break;
+            }
             System.out.print("Do you want to play again? Your current total is " + total + "\n" +
                     "1. Yes.\n" +
                     "2. No.\n" +
