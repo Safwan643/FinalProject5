@@ -32,7 +32,7 @@ public class Main {
                     Lose = "You lost. I regret to inform you that you lost $" + GambleAmount + ".",
                     Draw = "You have neither won nor lost. You have been refunded $" + GambleAmount + ".",
                     SuperWin = "You won! Congratulations, you won $" + GambleAmount * 36 + ".";
-            System.out.println("The first round is a practice round, you are welcome.");
+            System.out.println("The first round is a practice round. You're welcome.");
             switch (userChoice) {
                    case 1:
                        cf.Score();
