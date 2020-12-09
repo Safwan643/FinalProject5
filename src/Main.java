@@ -14,7 +14,7 @@ public class Main {
 
     public void CreateFile() {
         try {
-            File myObj = new File("filename.txt");
+            File myObj = new File("The Casino.txt");
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
             } else {
@@ -28,7 +28,7 @@ public class Main {
     public void ReadFile() {
         System.out.print("This is what is currently in the file: ");
         try {
-            File myObj = new File("filename.txt");
+            File myObj = new File("The Casino.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
@@ -43,15 +43,15 @@ public class Main {
     }
     public static void main(String[] args) {
         Main main = new Main();
+        main.CreateFile();
         main.ReadFile();
         Scanner input = new Scanner(System.in);
-        System.out.print("What is your name? ");
+        System.out.print("\nWhat is your name? ");
         main.userName = input.nextLine();
         boolean loop = true;
         Coinflip cf = new Coinflip();
         RockPaperScissors rps = new RockPaperScissors();
         Roulette rtt = new Roulette();
-        main.CreateFile();
         main.total = main.total + 500;
         System.out.print("Hello " + main.userName + ". ");
         while (loop) {
@@ -141,7 +141,7 @@ public class Main {
 
     public void WriteToFileTotal() {
         try {
-            PrintWriter pW = new PrintWriter("filename.txt");
+            PrintWriter pW = new PrintWriter("The Casino.txt");
             pW.println(userName + " has a total of " + total + " dollars.");
             pW.close();
             System.out.println("Successfully wrote to the file.");
