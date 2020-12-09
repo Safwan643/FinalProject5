@@ -1,5 +1,5 @@
 /* Main.java
- * Alessandro Krapf, Luke Langius, Safwan Ahmad
+ * Alessandro Krapf, Duke Langius, Safwan Ahmad
  * 12/7/2020
  * This program plays three luck games. This is the main class, mostly input/output. Calls 3 classes that run the actual games.
  */
