@@ -28,7 +28,6 @@ public class Main {
     public void ReadFile() {
         System.out.print("This is what is currently in the file: ");
         String data;
-        String balance;
         try {
             File myObj = new File("The Casino.txt");
             Scanner myReader = new Scanner(myObj);
@@ -142,15 +141,16 @@ public class Main {
     }
 
     public void WriteToFileTotal() {
-        try {
-            PrintWriter pW = new PrintWriter("The Casino.txt");
-            pW.println(userName + " " + total);
-            pW.close();
-            System.out.println("Successfully wrote to the file.");
+
+        try (FileWriter fw = new FileWriter("The Casino.txt", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw))
+        {
+            out.println(userName + " " + total);
         } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+            //
         }
+
     }
 
 }
