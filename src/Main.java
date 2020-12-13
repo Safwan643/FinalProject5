@@ -9,9 +9,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 public class Main {
-    double total;
+    double total=0;
     String userName;
-
+    boolean exists = false;
+    public void AskName() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("What is your name? ");
+        userName = input.nextLine();
+    }
     public void CreateFile() {
         try {
             File myObj = new File("The Casino.txt");
@@ -26,14 +31,22 @@ public class Main {
         }
     }
     public void ReadFile() {
-        System.out.print("This is what is currently in the file: ");
-        String data;
+        AskName();
+        System.out.println("This is what is currently in the file: ");
+        String dataName;
+        double data;
         try {
             File myObj = new File("The Casino.txt");
             Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                data = myReader.nextLine();
-                System.out.println(data);
+            while (myReader.hasNext()) {
+                //data = myReader.nextLine();
+                dataName = myReader.next();
+                data = myReader.nextDouble();
+                System.out.println(dataName + " $" + data);
+                if(dataName.equals(userName)) {
+                    total=data;
+                    exists = true;
+                }
             }
             myReader.close();
         } catch (FileNotFoundException e) {
@@ -47,8 +60,6 @@ public class Main {
         main.CreateFile();
         main.ReadFile();
         Scanner input = new Scanner(System.in);
-        System.out.print("\nWhat is your name? ");
-        main.userName = input.nextLine();
         boolean loop = true;
         Coinflip cf = new Coinflip();
         RockPaperScissors rps = new RockPaperScissors();
@@ -141,16 +152,46 @@ public class Main {
     }
 
     public void WriteToFileTotal() {
-
-        try (FileWriter fw = new FileWriter("The Casino.txt", true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter out = new PrintWriter(bw))
-        {
+        if (exists) {
+            try (PrintWriter outputBackUp = new PrintWriter("Backup.txt")
+            ) {
+                File myObj1 = new File("The Casino.txt");
+                Scanner input = new Scanner(myObj1);
+                String dataName;
+                double data;
+                while (input.hasNext()) {
+                    dataName = input.next();
+                    data = input.nextDouble();
+                    if (dataName.equals(userName))
+                        outputBackUp.println(userName + " " + total);
+                    else
+                        outputBackUp.println(dataName + " " + data);
+                    }
+                input.close();
+            } catch (IOException ignore) {
+            }
+            try( PrintWriter out = new PrintWriter("The Casino.txt")
+            ){
+                File myObj = new File("Backup.txt");
+                java.io.File file = new java.io.File("Backup.txt");
+                Scanner input = new Scanner(myObj);
+                String backingUp;
+                while(input.hasNextLine()) {
+                    backingUp = input.nextLine();
+                    out.println(backingUp);
+                }
+                input.close();
+                file.delete();
+            } catch (IOException ignored) {
+            }
+        } else {
+            try (FileWriter fw = new FileWriter("The Casino.txt", true);
+                 BufferedWriter bw = new BufferedWriter(fw);
+                 PrintWriter out = new PrintWriter(bw))
+            {
             out.println(userName + " " + total);
-        } catch (IOException e) {
-            //
+        } catch(IOException ignored){
         }
-
     }
-
+    }
 }
