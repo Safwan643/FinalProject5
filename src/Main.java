@@ -168,7 +168,9 @@ public class Main {
                         outputBackUp.println(dataName + " " + data);
                     }
                 input.close();
-            } catch (IOException ignore) {
+            } catch (IOException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
             }
             try( PrintWriter out = new PrintWriter("The Casino.txt")
             ){
@@ -182,7 +184,9 @@ public class Main {
                 }
                 input.close();
                 file.delete();
-            } catch (IOException ignored) {
+            } catch (IOException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
             }
         } else {
             try (FileWriter fw = new FileWriter("The Casino.txt", true);
@@ -190,7 +194,9 @@ public class Main {
                  PrintWriter out = new PrintWriter(bw))
             {
             out.println(userName + " " + total);
-        } catch(IOException ignored){
+        } catch(IOException e){
+                System.out.println("An error occurred.");
+                e.printStackTrace();
         }
     }
     }
