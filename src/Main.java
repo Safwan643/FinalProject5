@@ -2,6 +2,7 @@
  * Alessandro Krapf, Luke Langius, Safwan Ahmad
  * 12/7/2020
  * This program plays three luck games. This is the main class, mostly input/output. Calls 3 classes that run the actual games.
+ * It uses file io to remember players, and they're money amount.
  */
 import java.io.*;
 import java.io.File;
@@ -39,7 +40,6 @@ public class Main {
             File myObj = new File("The Casino.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNext()) {
-                //data = myReader.nextLine();
                 dataName = myReader.next();
                 data = myReader.nextDouble();
                 System.out.println(dataName + " $" + data);
