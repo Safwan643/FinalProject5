@@ -16,7 +16,7 @@ public class Main {
     public void AskName() {
         Scanner input = new Scanner(System.in);
         System.out.print("What is your name? ");
-        userName = input.nextLine();
+        userName = input.next();
     }
     public void CreateFile() {
         try {
