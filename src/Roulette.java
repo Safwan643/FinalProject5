@@ -1,6 +1,6 @@
 /* Roulette.java
  * Safwan Ahmad, Alessandro Krapf, Luke Langius
- * 12/7/2020
+ * 12/14/2020
  * This program plays roulette. The players have three options, two have 1 in 2 chance of winning, 1 has 1 in 36 chance, so will make you more money.
  * Returns int to main class where this is run. It returns: 0 (lose), 1 (win), 2 (super win).
  */

@@ -1,7 +1,8 @@
 /* RockPaperScissors.java
  * Luke Langius, Alessandro Krapf, Safwan Ahmad
- * 12/7/2020
- * This program will let you play rock paper scissors against the computer. It tracks who won each round by returning an integer. If, int = 0 computer won, int = 1 user won, int = 2 they tied.
+ * 12/14/2020
+ * This program will let you play rock paper scissors against the computer. It tracks who won each round by returning an integer.
+ * If, int = 0 computer won, int = 1 user won, int = 2 they tied. It returns the outcome to a main class.
  */
 import java.util.Date;
 import java.util.Random;

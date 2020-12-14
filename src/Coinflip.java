@@ -1,6 +1,6 @@
 /* Coinflip.java
  * Alessandro Krapf, Luke Langius, Safwan Ahmad
- * 12/7/2020
+ * 12/14/2020
  * This program plays the game coin flip using a random number generator. It sends information to a main class.
  */
 import java.util.Date;

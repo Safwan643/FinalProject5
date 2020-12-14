@@ -1,8 +1,8 @@
 /* Main.java
  * Alessandro Krapf, Luke Langius, Safwan Ahmad
- * 12/7/2020
+ * 12/14/2020
  * This program plays three luck games. This is the main class, mostly input/output. Calls 3 classes that run the actual games.
- * It uses file io to remember players, and they're money amount.
+ * It uses file io to remember players, and their money amount.
  */
 import java.io.*;
 import java.io.File;
