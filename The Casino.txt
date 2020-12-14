@@ -1,2 +1,3 @@
-Alessandro 1300.0
-Luca 100.0
+Alessandro 2000.0
+Luca 10.0
+DutchBro 0.5
